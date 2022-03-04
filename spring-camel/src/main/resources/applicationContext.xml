@@ -14,6 +14,9 @@
 	<bean id="myProcessor" class="com.test.grpc.MyProcessor">
 	</bean>
 
+	<bean id="greetingServiceImpl"
+		class="com.test.grpc.GreetingServiceImpl"></bean>
+
 	<camelContext
 		xmlns="http://camel.apache.org/schema/spring" id="dm.service.v1.0.0">
 		<restConfiguration component="servlet"
