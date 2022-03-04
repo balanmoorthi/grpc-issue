@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://camel.apache.org/schema/spring 
+       http://camel.apache.org/schema/spring/camel-spring.xsd
+       ">
+
+	<bean id="myProcessor" class="com.test.grpc.MyProcessor">
+	</bean>
+
+	<camelContext
+		xmlns="http://camel.apache.org/schema/spring" id="dm.service.v1.0.0">
+		<restConfiguration component="servlet"
+			producerApiDoc="rest-v1.0.0-swagger.json" bindingMode="auto"
+			enableCORS="true">
+			<corsHeaders key="Access-Control-Allow-Origin" value="*" />
+			<corsHeaders key="Access-Control-Allow-Headers"
+				value="Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization, token, jsonLayout" />
+		</restConfiguration>
+		<rest path="/v1.0.0" produces="application/json"
+			id="test.service.restlet">
+			<get uri="/health" id="health">
+				<to uri="direct-vm:tg.health" />
+			</get>
+		</rest>
+		<route id="direct-vm.tg.health">
+			<from uri="direct-vm:tg.health" />
+			<setProperty propertyName="command">
+				<constant>testGet</constant>
+			</setProperty>
+			<process ref="myProcessor" />
+		</route>
+	</camelContext>
+
+</beans>
+   

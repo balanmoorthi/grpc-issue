@@ -1,0 +1,68 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.example.parent</groupId>
+		<artifactId>demoparent</artifactId>
+		<version>DEV-SNAPSHOT</version>
+		<relativePath>..</relativePath>
+	</parent>
+	<groupId>com.springcamel</groupId>
+	<artifactId>springcamelapp</artifactId>
+	<packaging>war</packaging>
+	<name>springcamelapp</name>
+	<properties>
+		<env.camel.version>2.23.1</env.camel.version>
+		<env.spring.version>4.3.18.RELEASE</env.spring.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+	<dependencies>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${env.spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${env.spring.version}</version>
+		</dependency>
+		<!-- Apache Camel -->
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-core</artifactId>
+			<version>${env.camel.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-spring</artifactId>
+			<version>${env.camel.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-servlet</artifactId>
+			<version>${env.camel.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.camel</groupId>
+			<artifactId>camel-restlet</artifactId>
+			<version>${env.camel.version}</version>
+		</dependency>
+		<!-- json -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20170516</version>
+		</dependency>
+
+		<!-- -->
+		<dependency>
+			<groupId>com.test.grpc</groupId>
+			<artifactId>grpcdemo</artifactId>
+			<version>DEV-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+</project>
