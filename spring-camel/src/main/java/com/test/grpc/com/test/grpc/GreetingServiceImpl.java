@@ -1,9 +1,8 @@
 package com.test.grpc;
 
 import io.grpc.stub.StreamObserver;
-import net.devh.boot.grpc.server.service.GrpcService;
 
-@GrpcService
+
 public class GreetingServiceImpl extends GreetingServiceGrpc.GreetingServiceImplBase {
 
 	@Override
